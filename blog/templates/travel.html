@@ -1,0 +1,78 @@
+{
+{% extends "layout.html" %}
+{% block content %}
+ <div class="content-section">
+     <form method="post" action="" name="travel">
+       {{ form.hidden_tag() }}
+         <fieldset class="input-group">
+             <legend class="border-bottom mb-4">Travel Page</legend>
+
+                         <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">City</label>
+                              </div>
+                              <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>Choose the city</option>
+                                <option value="1">Rome</option>
+                                <option value="2">Milan</option>
+                                <option value="3">Naples</option>
+                              </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                              <select class="custom-select" id="inputGroupSelect02">
+                                <option selected>Choose the budget</option>
+                                <option value="1">100-200</option>
+                                <option value="2">200-300</option>
+                                <option value="3">300-400</option>
+                                  <option value="4">400-500</option>
+                                  <option value="5">500-600</option>
+
+                              </select>
+                              <div class="input-group-append">
+                                <label class="input-group-text" for="inputGroupSelect02">Budget</label>
+                              </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button">Period</button>
+                              </div>
+                              <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+                                <option selected>Choose the period</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+
+                            <div class="input-group">
+                              <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option selected>Choose how many days</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                              <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">Choose how many days </button>
+                              </div>
+                            </div>
+                      <div class="input-group">
+                              <select class="custom-select" id="inputGroupSelect05" aria-label="Example select with button addon">
+                                <option selected>Choose the type of travel</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                              <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">Type of Travel</button>
+                              </div>
+                            </div>
+                     </fieldset>
+                     <div class="form-group">
+                             {{ form.submit(class="btn btn-outline-info") }}
+                         </div>
+                 </form>
+               </div>
+{% endblock content %}
+}
