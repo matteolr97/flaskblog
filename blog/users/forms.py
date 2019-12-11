@@ -14,8 +14,6 @@ class RegistrationForm (FlaskForm):
                        validators=[DataRequired()])
     id = StringField('Identity Card',
                            validators=[DataRequired()])
-    img = FileField('Image ID',
-                    validators=[DataRequired()])
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',

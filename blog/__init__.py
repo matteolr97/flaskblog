@@ -46,11 +46,7 @@ def create_app(config_class=Config):
         from blog.travels import routes
         from blog.posts import routes
         from blog.main import routes
-
         db.create_all()
-
-
-
     return app
 
 

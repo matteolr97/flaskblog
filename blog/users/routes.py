@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint, app
 from flask_login import login_user, current_user, logout_user, login_required
 from blog import db, bcrypt
 from blog.models import User, Post
@@ -16,7 +16,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         pass1 = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        new_user=User(image_file=form.img.data,username=form.username.data,email=form.email.data,password=pass1, idCard=form.id.data)
+        new_user=User(username=form.username.data,email=form.email.data,password=pass1, idCard=form.id.data)
         db.session.add(new_user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
@@ -34,7 +34,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('main.home'))
+            return redirect(next_page) if next_page else redirect(url_for('users.account'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -106,3 +106,4 @@ def reset_token(token):
         flash('Your password has been updated! You are now able to log in', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
