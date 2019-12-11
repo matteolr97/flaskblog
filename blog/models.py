@@ -30,8 +30,10 @@ class Travel(db.Model):
     destination = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     budget = db.Column(db.String(100), nullable=False)
-    participants = db.Column(db.String(100), nullable=False)
+    participants = db.Column(db.String(2), nullable=False)
     duration = db.Column(db.String(2), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):

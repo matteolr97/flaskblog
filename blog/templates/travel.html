@@ -1,112 +1,89 @@
-
 {% extends "layout.html" %}
 {% block content %}
- <div class="content-section">
-     <form method="post" action="" name="travel">
-          {% if form.errors %}
-         {{form.errors}}
-         {%endif%}
-       {{ form.hidden_tag() }}
-         {{form.csrf_token }}
-         <fieldset class="input-group">
-             <legend class="border-bottom mb-4">Travel Page</legend>
+<div class="content-section">
+    <form method="post" action="">
+        {% if form.errors %}
+        {{form.errors}}
+        {%endif%}
+        {{ form.hidden_tag() }}
+        {{form.csrf_token }}
+        <fieldset class="input-group">
+            <legend class="border-bottom mb-4">Travel Page</legend>
 
-                         <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">City</label>
-                              </div>
-                              <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>Choose the city</option>
-                                <option value="1">Rome</option>
-                                <option value="2">Milan</option>
-                                <option value="3">Naples</option>
-                                  <option value="4">Berlin</option>
-                                  <option value="5">Budapest</option>
-                                <option value="6">Amsterdam</option>
-                                <option value="7">Paris</option>
-                                  <option value="8">Barcelona</option>
-                                <option value="9">New York</option>
-                                <option value="10">Zurigo</option>
-                              </select>
-                            </div>
+             <div class="form-group">
+                {{ form.destination.label(class="form-control-label") }}
+                {% if form.destination.errors %}
+                {{ form.destination(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.destination.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.destination(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
 
-                            <div class="input-group mb-3">
-                              <select class="custom-select" id="inputGroupSelect02">
-                                <option selected>Choose the budget</option>
-                                <option value="1">100-200</option>
-                                <option value="2">200-300</option>
-                                <option value="3">300-400</option>
-                                  <option value="4">400-500</option>
-                                  <option value="5">500-600</option>
+              <div class="form-group">
+                {{ form.budget.label(class="form-control-label") }}
+                {% if form.budget.errors %}
+                {{ form.budget(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.budget.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.budget(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
 
-                              </select>
-                              <div class="input-group-append">
-                                <label class="input-group-text" for="inputGroupSelect02">Budget</label>
-                              </div>
-                            </div>
+              <div class="form-group">
+                {{ form.duration.label(class="form-control-label") }}
+                {% if form.duration.errors %}
+                {{ form.duration(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.duration.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.duration(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
 
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                <button class="btn btn-outline-secondary" type="button">Period</button>
-                              </div>
-                              <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-                                <option selected>Choose the month</option>
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                  <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                  <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                  <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                              </select>
-                            </div>
-                            <div class="form-group">
-                                {{ form.participants.label(class="form-control-label") }}
-                                    {% if form.participants.errors %}
-                                {{ form.participants(class="form-control form-control-lg is-invalid") }}
-                                <div class="invalid-feedback">
-                                    {% for errors in form.participants.errors %}
-                                    <span>{{ error }}</span>
-                                    {% endfor %}
-                                </div>
-                                {% else %}
-                                {{ form.participants(class="form-control form-control-lg") }}
-                                    {% endif %}
-                            </div>
-                            <div class="input-group">
-                              <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                <option selected>Choose how many days</option>
-                                <option value="1">3</option>
-                                <option value="2">1 week</option>
-                                <option value="3">2 week</option>
-                              </select>
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Choose how many days </button>
-                              </div>
-                            </div>
-                      <div class="input-group">
-                              <select class="custom-select" id="inputGroupSelect05" aria-label="Example select with button addon">
-                                <option selected>Choose the type of travel</option>
-                                <option value="1">Cultural</option>
-                                <option value="2">Backpacking</option>
-                                <option value="3">Relax</option>
-                                  <option value="4">Party travel</option>
+            <div class="form-group">
+                {{ form.participants.label(class="form-control-label") }}
+                {% if form.participants.errors %}
+                {{ form.participants(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.participants.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.participants(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+              <div class="form-group">
+                {{ form.description.label(class="form-control-label") }}
+                {% if form.description.errors %}
+                {{ form.description(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.description.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.description(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
 
-                              </select>
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Type of Travel</button>
-                              </div>
-                            </div>
-                     </fieldset>
-                     <div class="form-group">
-                             {{ form.submit(class="btn btn-outline-info") }}
-                         </div>
-                 </form>
-               </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
 {% endblock content %}
-
