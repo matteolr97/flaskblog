@@ -1,5 +1,5 @@
 from flask import render_template, request, Blueprint
-from blog.models import Post
+from blog.models import Post, Travel
 
 main = Blueprint('main', __name__)
 
@@ -7,10 +7,13 @@ main = Blueprint('main', __name__)
 @main.route("/")
 @main.route("/home")
 def home():
-    return render_template('home.html')
+    page = request.args.get('page', 1, type=int)
+    travels = Travel.query.order_by(Travel.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('home.html', travels=travels)
 
 
 @main.route("/about")
 def about():
-    return render_template('about.html', title='About')
-
+    page = request.args.get('page', 1, type=int)
+    travels = Travel.query.order_by(Travel.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('about.html', travels=travels)

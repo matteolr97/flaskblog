@@ -16,7 +16,8 @@ def travel():
     form = TravelForm()
     if form.validate_on_submit():
         new_travel = Travel(destination=form.destination.data, duration=form.duration.data, budget=form.budget.data,
-                            participants=form.participants.data,description = form.description.data, user_id=current_user.id)
+                            participants=form.participants.data,description = form.description.data, user_id=current_user.id,
+                            user_email = current_user.email)
         db.session.add(new_travel)
         db.session.commit()
         flash('Your travel has been created!', 'success')

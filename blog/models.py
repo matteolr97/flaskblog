@@ -35,6 +35,8 @@ class Travel(db.Model):
     description = db.Column(db.String(200), nullable=False)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_email = db.Column(db.String(120), db.ForeignKey('user.email'), nullable=False)
+
 
     def __repr__(self):
         return "Travel('{self.destination}', '{self.date_posted}')"
